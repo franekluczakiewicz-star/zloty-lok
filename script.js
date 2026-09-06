@@ -41,18 +41,3 @@ dialog.addEventListener("click", (event) => {
     dialog.close();
   }
 });
-
-const slider = document.querySelector("[data-hero-slider]");
-if (slider) {
-  const slides = [...slider.querySelectorAll("[data-slide]")];
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let index = 0;
-
-  if (!reduceMotion && slides.length > 1) {
-    setInterval(() => {
-      slides[index].classList.remove("is-active");
-      index = (index + 1) % slides.length;
-      slides[index].classList.add("is-active");
-    }, 3500);
-  }
-}
