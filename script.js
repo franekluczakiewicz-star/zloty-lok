@@ -41,3 +41,47 @@ dialog.addEventListener("click", (event) => {
     dialog.close();
   }
 });
+
+const slider = document.querySelector("[data-hero-slider]");
+if (slider) {
+  const slides = [...slider.querySelectorAll("[data-slide]")];
+  const dotsWrap = slider.querySelector("[data-hero-dots]");
+  const prevBtn = slider.querySelector("[data-hero-prev]");
+  const nextBtn = slider.querySelector("[data-hero-next]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let index = 0;
+  let timer;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "hero-dot" + (i === 0 ? " is-active" : "");
+    dot.setAttribute("aria-label", `Zdjęcie ${i + 1}`);
+    dot.addEventListener("click", () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  const dots = [...dotsWrap.querySelectorAll(".hero-dot")];
+
+  const goTo = (next) => {
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
+    dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+    restart();
+  };
+
+  const restart = () => {
+    clearInterval(timer);
+    if (!reduceMotion) {
+      timer = setInterval(() => goTo(index + 1), 3500);
+    }
+  };
+
+  prevBtn.addEventListener("click", () => goTo(index - 1));
+  nextBtn.addEventListener("click", () => goTo(index + 1));
+
+  slider.addEventListener("mouseenter", () => clearInterval(timer));
+  slider.addEventListener("mouseleave", restart);
+
+  restart();
+}
