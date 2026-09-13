@@ -444,6 +444,11 @@ p:last-child {
   gap: 1.2rem;
 }
 
+.service-grid-single {
+  grid-template-columns: 1fr;
+  max-width: 36rem;
+}
+
 .service-card {
   padding: 1.8rem;
   background: var(--paper);
