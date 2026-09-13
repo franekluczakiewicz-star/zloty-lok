@@ -276,7 +276,7 @@ p:last-child {
   object-position: center center;
   border-radius: 28px 8px 28px 8px;
   box-shadow: var(--shadow);
-  background: #000;
+  background: var(--paper);
 }
 
 .hero-photo figcaption {
@@ -337,7 +337,7 @@ p:last-child {
   object-fit: cover;
   object-position: center center;
   border-radius: 8px 28px 8px 28px;
-  background: #000;
+  background: var(--paper);
 }
 
 .about h2,
@@ -494,13 +494,14 @@ p:last-child {
 }
 
 .gallery-item {
-  padding: 0.4rem;
-  border: 1px solid var(--line);
-  background: var(--paper);
+  padding: 0;
+  border: 0;
+  background: transparent;
   cursor: zoom-in;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 14px;
   justify-self: stretch;
+  box-shadow: none;
 }
 
 .gallery-item img {
@@ -811,7 +812,7 @@ p:last-child {
   }
 
   .gallery-item {
-    padding: 0.35rem;
+    padding: 0;
   }
 
   .about,
