@@ -331,9 +331,13 @@ p:last-child {
 
 .about-media img {
   width: 100%;
-  height: 620px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  max-height: 620px;
   object-fit: cover;
+  object-position: center center;
   border-radius: 8px 28px 8px 28px;
+  background: #000;
 }
 
 .about h2,
